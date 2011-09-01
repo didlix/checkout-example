@@ -14,8 +14,9 @@ class Offer {
   protected $_bulkDiscount = false;
   protected $_product;
   
+
   /**
-   * @param Product $product
+   * Set a unique ID for this object and assign the product to the offer.
    */
   public function __construct(Product $product) {
     $this->_id = uniqid('offer');
@@ -30,7 +31,7 @@ class Offer {
   }
   
   /**
-   * Add a bulk discount
+   * Add a bulk discount percentile
    */
   public function bulkDiscount($quantity, $discount) {
     $this->bulkDiscount = array('quantity' => $quantity, 'discount' => $discount);
@@ -43,25 +44,29 @@ class Offer {
 
     // Calculate the number of products that match this offer in the basket
     $noProducts = 0;
+    
+    // var_dump($basket);
+    
     foreach($basket AS $product) {
-      if($product->name === $this->_product->name) {
+      if($product->getName() === $this->_product->getName()) {
         $noProducts++;
       } 
     } 
-   
+
     // Apply bulk purchase price reductions
     if(is_array($this->_bulkDiscount) && $noProducts >= $this->_bulkDiscount['quantity']) {
-      foreach($products AS $key => $product) {
+      foreach($basket AS $key => $product) {
         var_dump($key);
         var_dump($product);
       }
     }
-    
+
     // Apply bogof offers
     if(true === $this->_bogof && $noProducts >= 2) {
-      foreach($products AS $key => $product) {
-        var_dump($key);
-        var_dump($product);        
+      foreach($basket AS $key => $product) {
+        echo "@todo bogof\r\n";
+        // var_dump($key);
+        // var_dump($product);        
       }
     }
     

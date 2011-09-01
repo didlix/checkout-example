@@ -4,7 +4,7 @@ require_once('checkout.php');
 require_once('product.php');
 require_once('offer.php');
 
-// TESTS!
+// TESTS!->total()
 
 /**
  * Basket: FR1,SR1,FR1,FR1,CF1
@@ -26,7 +26,7 @@ function test_case_one($offers) {
   $co->scan($fruit_tea);
   $co->scan($coffee);
   
-  if($co->total === 22.45) { return TRUE; }
+  if($co->total() === 22.45) { return TRUE; }
   
   return FALSE;
 }
@@ -47,7 +47,7 @@ function test_case_two($offers) {
   $co->scan($fruit_tea);
   $co->scan($fruit_tea); 
   
-  if($co->total === 3.11) { return TRUE; }
+  if($co->total() === 3.11) { return TRUE; }
   
   return FALSE;
   
@@ -71,7 +71,7 @@ function test_case_three($offers) {
   $co->scan($fruit_tea);
   $co->scan($strawberries);
   
-  if($co->total === 16.61) { return TRUE; }
+  if($co->total() === 16.61) { return TRUE; }
   
   return FALSE;
   
@@ -85,11 +85,11 @@ $coffee = new Product('Coffee', 11.23, 'CF1');
 
 $offers = array();
 $strawberries_offer = new Offer($strawberries);
-$strawberries_offer->bulkDiscount(3, .5); 
+$strawberries_offer->bulkDiscount(3, .9); 
 $offers[] = $strawberries_offer;
 
 $fruit_tea_offer = new Offer($strawberries);
-$fruit_tea_offer->bogof();
+$fruit_tea_offer->bogof(true);
 $offers[] = $fruit_tea_offer;
 
 // var_dump($offers);

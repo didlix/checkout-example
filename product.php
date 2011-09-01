@@ -7,17 +7,26 @@
  * @author Rachel Graves
  **/
 class Product {
- 
 
- public $_productName;
- public $_productCode;
- public $_productPrice;
+ protected $_productName;
+ protected $_productCode;
+ protected $_productPrice;
  
  
+ /**
+  * Assign properties to this object
+  */
  public function __construct($productName, $productPrice, $productCode) {
    $this->_productName = $productName;
    $this->_productPrice = $productPrice; 
    $this->_productCode = $productCode;
+ }
+ 
+ /**
+  * Return the name of the product
+  */
+ public function getName() {
+   return $this->_productName;
  }
  
 }

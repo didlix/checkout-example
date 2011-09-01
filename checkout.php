@@ -3,7 +3,8 @@
 class Checkout {
   
   protected $_offers = array();
-  
+  protected $_basket = array();
+    
   /**
    * Assign offers to the checkout
    *
@@ -12,8 +13,6 @@ class Checkout {
   public function __construct($offers) {
     $this->_offers = $offers;
   }
-  
-  protected $_basket = array();
   
   /**
    * scan an item into the new more powerful laser checkout system   
@@ -32,9 +31,9 @@ class Checkout {
     $total = (int)0;
     
     $this->_calculateDiscounts($this->_basket);
-    die('123');
+
     // Apply any offers to the basket
-    $this->_basket = $this->__calculateDiscounts($this->_basket);
+    $this->_basket = $this->_calculateDiscounts($this->_basket);
     
     foreach ($this->_basket as $product) {
       $total = $total + $product->price;
@@ -48,13 +47,11 @@ class Checkout {
    */
   private function _calculateDiscounts($basket) {
 
-    var_dump($this->_offers);
     foreach($this->_offers AS $offer) {  
       $basket = $offer->processBasket($basket);
     }
     
     return $basket;
   }
-  
   
 }
