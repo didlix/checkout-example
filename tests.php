@@ -61,23 +61,19 @@ function test_case_three($offers) {
   
 }
 
-// Setup the products for the demo
-$fruit_tea = new Product('Fruit tea', 3.11, 'FR1');
-$strawberries = new Product('Strawberries', 5, 'SR1');
-$coffee = new Product('Coffee', 11.23, 'CF1');
-
-
+// Setup the offers
 $offers = array();
-$strawberries_offer = new Offer($strawberries);
+$strawberries_offer = new Offer(new Product('Strawberries', 5, 'SR1'));
 $strawberries_offer->bulkDiscount(3, .10); 
 $offers[] = $strawberries_offer;
 
-$fruit_tea_offer = new Offer($fruit_tea);
+$fruit_tea_offer = new Offer(new Product('Fruit tea', 3.11, 'FR1'));
 $fruit_tea_offer->bogof(true);
 $offers[] = $fruit_tea_offer;
 
-// var_dump($offers);
 
+// Run the tests and store the results in an array
+$tests = array();
 $tests[] = test_case_one($offers);
 $tests[] = test_case_two($offers);
 $tests[] = test_case_three($offers);
@@ -87,11 +83,8 @@ foreach($tests AS $test) {
     $errors = true;
   } else { 
     $errors = false;
-  }
-  
-  
+  } 
 }
-
 if($errors !== true) {
   echo "The new more powerful laser checkout system is fully armed and operational!\r\n";
   echo "aka all tests passed!";

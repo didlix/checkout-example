@@ -1,0 +1,23 @@
+# New more powerful laser checkout system
+
+## Running the checkout tests
+
+You can run the checkout by running:
+
+php -f tests.php
+
+This has been tested with:
+
+PHP 5.3.6 with Suhosin-Patch (cli) (built: Jun 16 2011 22:26:57) 
+Copyright (c) 1997-2011 The PHP Group
+Zend Engine v2.3.0, Copyright (c) 1998-2011 Zend Technologies
+
+On Mac OS X Lion.
+
+
+## Hindsight
+
+If I were to do this again /work on it further I would:
+
+* Make it so you can add/remove offer objects at any time.
+* Put in some flexibility to cater for a product having multiple offers / one offer disabling other offers. At present, if you were to assign multiple offers the checkout would run all of them.
