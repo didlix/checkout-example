@@ -22,10 +22,11 @@ On Mac OS X Lion.
 
 ## Hindsight
 
-If I were to do this again / work on it further I would:
+If I were to do this again / work on it further / have more time; I would:
 
 * Make it so you can add/remove offer objects at any time.
 * Put in some flexibility to cater for a product having multiple offers / one offer disabling other offers. At present, if you were to assign multiple offers the checkout would run all of them.
+* You can set both bogof and bulk discounts on an offer, but it wouldn't work and I have not added error handling for this.
 * Be rid of arrays and use more objects
 * Use phpdoc tags properly / learn how to use textmate properly.
 * Would change offer->processBasket(), I was rushing to get things finished at this point, I don't like the way I have done it.

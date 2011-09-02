@@ -81,9 +81,7 @@ class Offer {
           $basket[$key] = $product;
         }
         $i++;
-      }
-      
-      return $basket;      
+      } 
     }
 
     return $basket;
