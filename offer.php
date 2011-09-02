@@ -60,13 +60,8 @@ class Offer {
           $product->setPrice($newPrice);
           $basket[$key] = $product;
         }
-      } // foreach
-
-      return $basket;
-    }
-
-    // Apply bogof offers
-    if(true === $this->_bogof && $noProducts >= 2) {
+      } 
+    } elseif(true === $this->_bogof && $noProducts >= 2) {
       foreach($basket AS $key => $product) {
         if($product->getName() === $this->_product->getName()) {
           $offerProducts[$key] = $product;
