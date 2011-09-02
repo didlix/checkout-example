@@ -1,5 +1,10 @@
 # New more powerful laser checkout system
 
+Please see:
+
+http://www.youtube.com/watch?v=Cu7gzjK16oc#t=2m57s
+
+
 ## Running the checkout tests
 
 You can run the checkout by running:
