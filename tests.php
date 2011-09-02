@@ -86,6 +86,6 @@ foreach($tests AS $test) {
   } 
 }
 if($errors !== true) {
-  echo "The new more powerful laser checkout system is fully armed and operational!\r\n";
-  echo "aka all tests passed!";
+  echo 'The new more powerful laser checkout system is fully armed and operational!' . PHP_EOL;
+  echo 'AKA all tests passed!' . PHP_EOL;
 }
