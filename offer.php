@@ -34,7 +34,7 @@ class Offer {
    * Add a bulk discount percentile
    */
   public function bulkDiscount($quantity, $discount) {
-    $this->bulkDiscount = array('quantity' => $quantity, 'discount' => $discount);
+    $this->_bulkDiscount = array('quantity' => $quantity, 'discount' => $discount);
   }
   
   /**
@@ -44,34 +44,51 @@ class Offer {
 
     // Calculate the number of products that match this offer in the basket
     $noProducts = 0;
-    
-    // var_dump($basket);
-    
-    foreach($basket AS $product) {
-      if($product->getName() === $this->_product->getName()) {
-        $noProducts++;
-      } 
+
+    foreach($basket AS $key => $product) {
+        if($product->getName() === $this->_product->getName()) {
+          $noProducts++;
+        } 
     } 
 
     // Apply bulk purchase price reductions
     if(is_array($this->_bulkDiscount) && $noProducts >= $this->_bulkDiscount['quantity']) {
+
       foreach($basket AS $key => $product) {
-        var_dump($key);
-        var_dump($product);
-      }
+        if($product->getName() === $this->_product->getName()) {
+          $percentile = 1 - $this->_bulkDiscount['discount'];
+          $newPrice = $product->getPrice() * $percentile;
+          $product->setPrice($newPrice);
+          $basket[$key] = $product;
+        }
+      } // foreach
+
+      return $basket;
     }
 
     // Apply bogof offers
     if(true === $this->_bogof && $noProducts >= 2) {
       foreach($basket AS $key => $product) {
-        echo "@todo bogof\r\n";
-        // var_dump($key);
-        // var_dump($product);        
+        if($product->getName() === $this->_product->getName()) {
+          $offerProducts[$key] = $product;
+        }   
       }
+
+      $noOfOfferProducts = count($offerProducts);
+      $i = 1;
+      foreach($offerProducts AS $key => $product) {
+        if($i % 2 === 0) {
+          $product->setPrice(0);
+          $basket[$key] = $product;
+        }
+        $i++;
+      }
+      
+      return $basket;      
     }
-    
+
     return $basket;
-   
+
   }
   
 }

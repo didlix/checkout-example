@@ -11,6 +11,7 @@ class Product {
  protected $_productName;
  protected $_productCode;
  protected $_productPrice;
+ protected $_id;
  
  
  /**
@@ -20,6 +21,7 @@ class Product {
    $this->_productName = $productName;
    $this->_productPrice = $productPrice; 
    $this->_productCode = $productCode;
+   $this->_id = uniqid('product');
  }
  
  /**
@@ -28,5 +30,18 @@ class Product {
  public function getName() {
    return $this->_productName;
  }
+ 
+ public function getPrice() {
+   return $this->_productPrice;
+ }
+ 
+ 
+ /**
+  * Set a new price on the product
+  */
+ public function setPrice($newPrice) {
+   $this->_productPrice = $newPrice;
+ }
+ 
  
 }

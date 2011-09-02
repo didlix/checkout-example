@@ -28,17 +28,22 @@ class Checkout {
    * Analyse items in $_basket, apply any offers and return a total
    **/
   public function total() {
-    $total = (int)0;
+    $total = 0;
     
-    $this->_calculateDiscounts($this->_basket);
-
+    
+//     var_dump($this->_basket);
     // Apply any offers to the basket
     $this->_basket = $this->_calculateDiscounts($this->_basket);
     
-    foreach ($this->_basket as $product) {
-      $total = $total + $product->price;
-    }
 
+    // var_dump($this->_basket);
+
+
+    
+    foreach ($this->_basket as $product) {
+      $total = $total + $product->getPrice();
+    }
+echo "\r\ntotal:" . $total . "\r\n";
     return $total;
   }
   
@@ -50,7 +55,7 @@ class Checkout {
     foreach($this->_offers AS $offer) {  
       $basket = $offer->processBasket($basket);
     }
-    
+
     return $basket;
   }
   
