@@ -26,3 +26,5 @@ If I were to do this again /work on it further I would:
 
 * Make it so you can add/remove offer objects at any time.
 * Put in some flexibility to cater for a product having multiple offers / one offer disabling other offers. At present, if you were to assign multiple offers the checkout would run all of them.
+* Be rid of arrays and use more objects
+* Use phpdoc tags properly / learn how to use textmate properly.
