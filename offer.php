@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Provide a system for creating offers
  *

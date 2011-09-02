@@ -31,6 +31,9 @@ class Product {
    return $this->_productName;
  }
  
+ /**
+  * Return the price of the product
+  */
  public function getPrice() {
    return $this->_productPrice;
  }
