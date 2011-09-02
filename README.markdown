@@ -30,3 +30,4 @@ If I were to do this again / work on it further / have more time; I would:
 * Be rid of arrays and use more objects
 * Use phpdoc tags properly / learn how to use textmate properly.
 * Would change offer->processBasket(), I was rushing to get things finished at this point, I don't like the way I have done it.
+* Use a better coding style that isn't some weird cross breed of drupal / Zend
